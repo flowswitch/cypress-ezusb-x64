@@ -1,0 +1,44 @@
+#****************************************************************
+#*
+#*	File:	Sources
+#*
+#*	build information file for the WDM build.exe utility
+#*
+#*	Date:		February 12, 1999
+#*	Version:	1.00.00
+#*
+#*	Notes:
+#*   Copyright (c) 1997,1998,1999 Anchor Chips, Inc.  May not be reproduced without
+#*   permission.  See the license agreement for more details.
+#*
+#*	Environment:
+#*		WDM Build utility information file
+#*
+#*	Revision History:
+#*
+#****************************************************************
+
+TARGETNAME=ezusb
+TARGETTYPE=DRIVER
+TARGETPATH=.\LIB
+DRIVERTYPE=WDM
+
+
+INCLUDES=$(BASEDIR)\inc; \
+		 $(BASEDIR)\src\usb\inc; \
+		 $(BASEDIR)\src\wdm\usb\inc; \
+          ..\..\inc
+
+C_DEFINES=$(C_DEFINES) /DDRIVER
+
+#TARGETLIBS=$(BASEDIR)\lib\*\free\usbd.lib
+
+# to build this driver using the Windows 2000 DDK, uncomment the following line:
+TARGETLIBS=$(DDK_LIB_PATH)\usbd.lib
+
+USE_MAPSYM=1
+
+SOURCES= ezusbsys.rc \
+         ezusbsys.c
+
+#SOURCES = ezusbsys.c
